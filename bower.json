@@ -1,0 +1,29 @@
+{
+  "name": "ionita",
+  "description": "Website Ionita Krugner",
+  "main": "gulpfile.js",
+  "authors": [
+    "Bruno Gomes"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Advogado",
+    "Ionita",
+    "Mulher",
+    "Direitos",
+    "Krugner"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./src/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1"
+  }
+}
