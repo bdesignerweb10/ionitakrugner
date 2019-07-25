@@ -32,57 +32,79 @@
 </head>
 <body>
 	<header class="header">
-		<div class="row header-menu">
-			<div class="col-sm-10"></div>
-			<div class="col-sm-2 social">
-				<a href=""><i class="fab fa-facebook-f"></i></a>
-				<a href=""><i class="fab fa-instagram"></i></a>
-				<a href=""><i class="fab fa-twitter"></i></a>
-				<a href=""><i class="fab fa-youtube"></i></a>
-			</div>
-		</div><!-- header-menu-->
-		<div class="row menu">
-			<div class="col-sm-4 logo">
-				<h2><strong>Ionita</strong> Krügner</h2>
-			</div>
-			<div class="col-sm-8">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light nav-menu">
-		  <a class="navbar-brand" href="#"></a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
+		<div class="container-fluid">
+			<div class="row header-menu">
+				<div class="col-sm-1 header-menu-top">					
+				</div><!-- col-sm-1-->		
+				<div class="col-sm-2 header-menu-top-img">
+					<img src="img/ionita-top.jpg">
+				</div><!-- col-sm-2-->
+				<div class="col-sm-7">
+					<div class="row">
+						<div class="col-sm-12 social">
+							<a href=""><i class="fab fa-facebook-f"></i></a>
+							<a href=""><i class="fab fa-instagram"></i></a>
+							<a href=""><i class="fab fa-linkedin"></i></a>
+							<a href=""><i class="fab fa-twitter"></i></a>
+							<a href=""><i class="fab fa-youtube"></i></a>
+						</div><!-- col-sm-12-->
+						<div class="col-sm-12 logo">
+							<img src="img/logo.png">
+						</div><!-- col-sm-12-->
+					</div><!-- row-->
+				</div><!-- col-sm-5-->
+				<div class="col-sm-4"></div>		
+			</div><!--row -->
+			<div class="row menu">
+				<div class="col-sm-1 offset-1"></div>
+				<div class="col-sm-6">
+					<nav class="navbar navbar-expand-lg navbar-light navbar-menu">
+					  <a class="navbar-brand" href="#"></a>
+					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+					  </button>
 
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item">
-		        <a class="nav-link" href="index.php">Inicio</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Perfil</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Serviços</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Entrevistas</a>
-		      </li>		      
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Informativos</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Jurisprudência</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link nav-blog" href="#">Blog</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Contato</a>
-		      </li>
-		    </ul>		    
-		  </div>
-		</nav>
-			</div>
-		</div><!--row -->
+					  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					    <ul class="navbar-nav mr-auto nav-menu">
+					      <li class="nav-item active">
+					        <a class="nav-link" href="index.php">Inicio</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="perfil.php">Perfil</a>
+					      </li>					      
+					      <li class="nav-item">
+					        <a class="nav-link" href="servicos.php">Serviços</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="entrevistas.php">Entrevistas</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="informativos.php">Informativos</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="#">Jurisprudência</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="#">Blog</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="#">Contato</a>
+					      </li>
+					    </ul>					    
+					</nav>
+				</div><!-- col-sm-8-->
+				<div class="col-sm-2 menu-search">
+					<div class="input-group">
+						<input class="form-control search" type="search" placeholder="O que você procura?" aria-label="Search" style="border-right: none; color: #8dadb6; font-size: 13px;">
+						<div class="input-group-append">
+							<div class="input-group-text search" style="color: #8dadb6">
+								<i class="fas fa-search"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- row -->
+		</div><!-- container -->
 	</header>
 	
 	

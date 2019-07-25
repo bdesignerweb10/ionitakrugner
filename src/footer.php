@@ -1,42 +1,44 @@
 		<footer class="footer">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4">
-						<ul class="footer-menu">
-							<li class="footer-title">Acesso rápido</li>					
-							<li><a href="" class="footer-link">Perfil</a></li>
-							<li><a href="quem-somos.php" class="footer-link">Serviços</a></li>
-							<li><a href="contato.php" class="footer-link">Entrevistas</a></li>						 <li><a href="contato.php" class="footer-link">Informativos</a></li>
-							<li><a href="contato.php" class="footer-link">Jurisprudência</a></li>
-							<li><a href="contato.php" class="footer-link">Blog</a></li>
-							<li><a href="contato.php" class="footer-link">Contato</a></li>
-						</ul>
+					<div class="col-sm-1"></div>
+					<div class="col-sm-3 logo-footer">
+						<img src="img/logo-footer.jpg">
+						<p>OAB/SP 276.421</p>
 					</div>
-					<div class="col-sm-4">
-						<ul class="footer-menu">
-							<li class="footer-title">Causas em que apoio</li>	
-							<li><a href="" class="footer-link">Direitos da mulher</a></li>
-							<li><a href="" class="footer-link">Lei Maria da Penha</a></li>
-						</ul>
-					</div>
-					<div class="col-sm-4">
-						<ul class="footer-menu fotter-social">
-							<li class="footer-title">Redes Sociais</li>
-							<li><a href="" class="footer-link" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>	
-							<a href="" target="_blank"  class="footer-link"><i class="fab fa-instagram fa-2x"></i></a>
-							<a href="" target="_blank"  class="footer-link"><i class="fab fa-twitter fa-2x"></i></a>
-							<a href="" target="_blank"  class="footer-link"><i class="fab fa-youtube fa-2x"></i></a>
-							</li>
-						</ul>
-						<ul class="footer-developer">
-							<li class="footer-title">Desenvolvido por:</li>	
-							<li><a href="" class="footer-link"><i class="fas fa-laptop-code"></i> Bruno Gomes</a></li>
-							<li><a href="" class="footer-link"><i class="fas fa-mobile-alt"></i> (19) 99897-0090</a></li>
-							<li><a href="" class="footer-link"><i class="far fa-envelope"></i> bdesigner_web@hotmail.com</a></li>
-						</ul>
-					</div>
-				</div>				
-			</div><!-- container -->
+					<div class="col-sm-6">
+						<div class="row">
+							<div class="col-sm-12 social-footer">
+								<p>Siga nas redes sociaias:</p>
+								<i class="fab fa-facebook-f"></i>
+								<i class="fab fa-instagram"></i>
+								<i class="fab fa-linkedin"></i>
+								<i class="fab fa-twitter"></i>
+								<i class="fab fa-youtube"></i>
+							</div><!-- col-sm-12-->
+							<div class="col-sm-12">
+								<nav class="nav menu-footer">
+								  <a class="nav-link" href="#">Inicio</a>
+								  <span>|</span>
+								  <a class="nav-link" href="#">Perfil</a>
+								  <span>|</span>
+								  <a class="nav-link" href="#">Serviços</a>
+								  <span>|</span>
+								  <a class="nav-link" href="#">Entrevistas</a>
+								  <span>|</span>
+								  <a class="nav-link" href="#">Informativos</a>
+								  <span>|</span>
+								  <a class="nav-link" href="#">Jurisprudência</a>
+								  <span>|</span>
+								  <a class="nav-link" href="#">Blog</a>
+								  <span>|</span>
+								  <a class="nav-link" href="#">Contato</a>
+								</nav>
+							</div><!-- col-sm-12-->	
+						</div><!-- row -->
+					</div><!-- col-sm-6-->
+				</div><!-- row-->
+			</div><!-- container-->
 		</footer>
 		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>		
