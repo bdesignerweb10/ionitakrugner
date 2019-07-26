@@ -26,7 +26,7 @@
 	<div class="container">
 		<div class="row cards">			
 			<div class="col-sm-4">
-				<div class="card" style="width: 18rem; height: 330px;">
+				<div class="card card-index-mob" style="width: 18rem; height: 330px;">
 				  <div class="card-body">
 				    <h5 class="card-title">Informativos</h5>				    
 				    <div class="row">
@@ -71,7 +71,7 @@
 				</div>	
 			</div><!--col-sm-4-->
 			<div class="col-sm-4">
-				<div class="card" style="width: 20rem; height: 330px;">
+				<div class="card card-index-mob" style="width: 20rem; height: 330px;">
 				  <div class="card-body">
 				    <h5 class="card-title">Blog</h5>
 				    <div class="row">
@@ -122,7 +122,7 @@
 	</div><!-- container -->
 	<div class="container">
 		<div class="row logos">
-			<div class="col-sm-2 offset-1">
+			<div class="col-sm-2 offset-sm-1">
 				<img src="img/oab-nacional.jpg">
 			</div>
 			<div class="col-sm-2">

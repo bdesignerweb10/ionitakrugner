@@ -7198,6 +7198,142 @@ body {
   background: #fff;
   padding: 7px 17px; }
 
+/* Jurisprudencia */
+.jurisprudence .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 0px solid rgba(0, 0, 0, 0.12) !important; }
+
+.jurisprudence .card-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 10px !important;
+  background-color: #1b5a6c;
+  color: #fff;
+  margin: 5px 0; }
+
+.jurisprudence .btn-link {
+  color: #fff;
+  text-decoration: none; }
+
+.jurisprudence .list-group-item {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  margin-bottom: 3px;
+  background-color: #fff;
+  border: 0;
+  border-bottom: 1px solid #1b8eaf;
+  color: #1b8eaf; }
+  .jurisprudence .list-group-item > active {
+    color: #737478 !important; }
+
+.jurisprudence .card-default {
+  border-radius: 10px;
+  border: 1px solid #1b8eaf !important;
+  padding: 15px; }
+
+.print a {
+  color: #1b5a6c;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none; }
+
+/* Blog */
+.blog {
+  margin: 25px 0; }
+
+.blog-mini {
+  margin: 25px 0;
+  display: flex;
+  justify-content: space-between; }
+
+.categoria {
+  border-radius: 10px;
+  border-color: #1b5a6c;
+  color: #1b5a6c; }
+
+.border {
+  border-top: 1px dotted #1b5a6c !important;
+  margin: 10px 0; }
+
+.blog-mini .headline {
+  font-size: 13px !important; }
+
+.blog-mini .blog-link {
+  font-size: 12px !important; }
+
+.blog .headline-sub,
+.blog-mini .headline-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: #88898c; }
+
+.blog-text {
+  font-size: 12px;
+  color: #88898c; }
+
+.blog-link {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: #1b8eaf; }
+  .blog-link:hover {
+    text-decoration: underline;
+    color: #1b8eaf; }
+
+.blog-img {
+  border-radius: 10px; }
+
+/* Contato */
+.contact p {
+  font-size: 15px;
+  text-align: center;
+  color: #346777; }
+
+.contact .form-control {
+  border-radius: 10px;
+  border: 1px solid #1b8eaf !important; }
+
+.contact .btn-contact {
+  margin: 0 16px;
+  padding: 7px 23px;
+  border-radius: 10px;
+  border: 1px solid #1b5a6c !important;
+  background: #1b5a6c;
+  color: #fff; }
+  .contact .btn-contact:hover {
+    opacity: 0.8; }
+
+.contact-location {
+  background: #1b5a6c;
+  padding: 35px 20px; }
+
+.contact-location p {
+  color: #fff;
+  text-align: left;
+  margin: 0;
+  padding: 4px; }
+  .contact-location p > span {
+    font-weight: 600; }
+  .contact-location p > i {
+    padding: 0 5px; }
+
+.maps {
+  margin: 30px 0; }
+
+.maps iframe {
+  border-radius: 10px; }
+
 /* Slides */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -7333,3 +7469,28 @@ body {
 .menu-footer span {
   padding: 0.2rem 0;
   color: #fff; }
+
+/* AJUSTES MOBILE */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .header-menu-top-img img {
+    max-width: 100% !important; }
+  .menu-search {
+    display: flex;
+    padding: 10px 15px; }
+  .carousel-control-next {
+    right: 0; }
+  .carousel-control-prev {
+    left: 0; }
+  .card-index-mob {
+    width: 20rem !important;
+    height: auto !important; }
+  .jurisprudence {
+    margin: 20px 0; }
+  .categoria {
+    margin: 10px 0; }
+  .contact p {
+    font-size: 13px; }
+  .maps iframe {
+    border-radius: 10px;
+    width: 331px;
+    height: auto; } }

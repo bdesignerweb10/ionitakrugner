@@ -18,21 +18,21 @@
 							</div><!-- col-sm-12-->
 							<div class="col-sm-12">
 								<nav class="nav menu-footer">
-								  <a class="nav-link" href="#">Inicio</a>
+								  <a class="nav-link" href="index.php">Inicio</a>
 								  <span>|</span>
-								  <a class="nav-link" href="#">Perfil</a>
+								  <a class="nav-link" href="perfil.php">Perfil</a>
 								  <span>|</span>
-								  <a class="nav-link" href="#">Serviços</a>
+								  <a class="nav-link" href="servicos.php">Serviços</a>
 								  <span>|</span>
-								  <a class="nav-link" href="#">Entrevistas</a>
+								  <a class="nav-link" href="entrevistas.php">Entrevistas</a>
 								  <span>|</span>
-								  <a class="nav-link" href="#">Informativos</a>
+								  <a class="nav-link" href="informativos.php">Informativos</a>
 								  <span>|</span>
-								  <a class="nav-link" href="#">Jurisprudência</a>
+								  <a class="nav-link" href="jurisprudencia.php">Jurisprudência</a>
 								  <span>|</span>
-								  <a class="nav-link" href="#">Blog</a>
+								  <a class="nav-link" href="blog.php">Blog</a>
 								  <span>|</span>
-								  <a class="nav-link" href="#">Contato</a>
+								  <a class="nav-link" href="contato.php">Contato</a>
 								</nav>
 							</div><!-- col-sm-12-->	
 						</div><!-- row -->

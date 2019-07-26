@@ -12,7 +12,7 @@
 			<div class="col-sm-2"></div>
 			<div class="col-sm-10 services">
 			<div class="row">
-			  <div class="col-4">
+			  <div class="col-12 col-sm-4">
 			    <div class="list-group" id="list-tab" role="tablist">
 			      <a class="list-group-item list-group-item-action active" data-toggle="list" href="#service1" role="tab" aria-controls="home">Lorem ipsum <i class="fas fa-angle-right"></i></a>
 			      <a class="list-group-item list-group-item-action" data-toggle="list" href="#service2" role="tab" aria-controls="profile">Lorem ipsum <i class="fas fa-angle-right"></i></a>
@@ -20,7 +20,7 @@
 			      <a class="list-group-item list-group-item-action" data-toggle="list" href="#service4" role="tab" aria-controls="settings">Lorem ipsum <i class="fas fa-angle-right"></i></a>
 			    </div>
 			  </div>
-			  <div class="col-8">
+			  <div class="col-12 col-sm-8">
 			    <div class="tab-content" id="nav-tabContent">
 			      <div class="tab-pane fade show active" id="service1" role="tabpanel" aria-labelledby="list-home-list">
 			      	<div class="card card-default mb-3">

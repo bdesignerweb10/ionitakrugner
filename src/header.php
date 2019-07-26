@@ -18,10 +18,8 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
 	<link rel="manifest" href="img/favicon/manifest.json">
 	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-	<link rel="shortcut icon" href="img/favicon/favicon.ico">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="msapplication-config" content="img/favicon/browserconfig.xml">
-	<!--<meta name="theme-color" content="#ffffff">-->	
+	<link rel="shortcut icon" href="img/favicon/favicon.ico">	
+	<meta name="msapplication-config" content="img/favicon/browserconfig.xml">	
 	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.min.css">
@@ -58,7 +56,7 @@
 			<div class="row menu">
 				<div class="col-sm-1 offset-1"></div>
 				<div class="col-sm-6">
-					<nav class="navbar navbar-expand-lg navbar-light navbar-menu">
+					<nav class="navbar navbar-expand-lg navbar-dark navbar-menu">
 					  <a class="navbar-brand" href="#"></a>
 					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					    <span class="navbar-toggler-icon"></span>
@@ -82,13 +80,13 @@
 					        <a class="nav-link" href="informativos.php">Informativos</a>
 					      </li>
 					      <li class="nav-item">
-					        <a class="nav-link" href="#">Jurisprudência</a>
+					        <a class="nav-link" href="jurisprudencia.php">Jurisprudência</a>
 					      </li>
 					      <li class="nav-item">
-					        <a class="nav-link" href="#">Blog</a>
+					        <a class="nav-link" href="blog.php">Blog</a>
 					      </li>
 					      <li class="nav-item">
-					        <a class="nav-link" href="#">Contato</a>
+					        <a class="nav-link" href="contato.php">Contato</a>
 					      </li>
 					    </ul>					    
 					</nav>
