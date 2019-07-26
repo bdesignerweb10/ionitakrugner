@@ -165,6 +165,12 @@ gulp.task("sass-adm", ['cache:css-adm'], function() {
  	.pipe(gulp.dest('./dist/admin/fonts'))
  });
 
+ /* move a pasta img para pasta dist/img */
+ gulp.task("move-img-adm", function() { 
+ 	return gulp.src('./src/admin/img/**') 
+ 	.pipe(gulp.dest('./dist/admin/img'))
+ });
+
  /* SERVIDOR LOCALHOST */
 
  /* Servidor local na pasta dist/ */
@@ -192,4 +198,4 @@ gulp.task("server", function() {
 });
 
 /* Inicia todas as tasks do gulp */
-gulp.task("default", ["move-htaccess", "sass", "css", "js", "minify-html" ,"minify-php", "move-js", "move-fonts", "move-libs", "acts", "move-img", "concat-js", "admin-css" ,"move-fonts-adm" ,"minify-html-adm", "sass-adm" ,"minify-php-adm" ,"admin-js" ,"server"]);
+gulp.task("default", ["move-htaccess", "sass", "css", "js", "minify-html" ,"minify-php", "move-js", "move-fonts", "move-libs", "acts", "move-img", "concat-js", "admin-css" ,"move-fonts-adm" ,"minify-html-adm", "sass-adm" ,"minify-php-adm", "move-img-adm" ,"admin-js" ,"server"]);
