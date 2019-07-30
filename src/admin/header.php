@@ -1,3 +1,10 @@
+<?php
+	require_once("../acts/connect.php");	
+		
+	if (!isset($_SESSION["usu_id"]) || empty($_SESSION["usu_id"]) || 
+	!isset($_SESSION['usu_nivel']) || empty($_SESSION["usu_nivel"]) ||
+	$_SESSION['usu_nivel'] == "3" || $_SESSION["usu_id"] == "0") header('Location: ./');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,10 +46,16 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Inicio</a>
+	        <a class="nav-link" href="home.php">Inicio</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="#">Serviços</a>
+	        <a class="nav-link" href="ger-slides.php">Slides</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Videos</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="ger-servicos.php">Serviços</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">Entrevistas</a>
@@ -51,7 +64,7 @@
 	        <a class="nav-link" href="#">Informativos</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="#">Jurisprudência</a>
+	        <a class="nav-link" href="ger-jurisprudencia.php">Jurisprudência</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">Blog</a>
@@ -62,16 +75,16 @@
 	    </ul>
 	    <ul class="navbar-nav mr-auto">
 	    	<span class="circle">
-	      		<img src="img/perfil.png" width="40"> 
+	      		<img src="img/perfil/<?php echo $_SESSION["usu_nome"] ?>.png" width="40"> 
 	      	</span>
 	    	<li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
-		          Olá Ionita Krügner, Bem vinda!
+		          Olá <?php echo $_SESSION["usu_nome"] ?>, Bem vinda!
 		        </a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 		          <a class="dropdown-item" href="#">Meus dados</a>          
 		          <div class="dropdown-divider"></div>
-		          <a class="dropdown-item" href="#">Sair</a>
+		          <a class="dropdown-item" id="logout" href="#">Sair</a>
 		        </div>
 		      </li>
 	    </ul>

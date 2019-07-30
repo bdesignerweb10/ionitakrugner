@@ -67,7 +67,7 @@
 				  </div>				  
 				</div>
 				<div class="col-sm-10 btns-card">
-					<a href="" class="btn btn-card">Veja mais</a>		
+					<a href="informativos.php" class="btn btn-card">Veja mais</a>		
 				</div>	
 			</div><!--col-sm-4-->
 			<div class="col-sm-4">
@@ -103,7 +103,7 @@
 				  </div>
 				</div>
 				<div class="col-sm-11 btns-card">	
-					<a href="" class="btn btn-card">Acesse</a>
+					<a href="blog.php" class="btn btn-card">Acesse</a>
 				</div>
 			</div><!--col-sm-4-->
 			<div class="col-sm-4">

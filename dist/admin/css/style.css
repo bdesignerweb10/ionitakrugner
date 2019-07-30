@@ -7085,14 +7085,62 @@ body {
 .default h1 {
   font-size: 25px; }
 
-.quick-access .nav-link {
+.quick-access .nav-link,
+.btn-add,
+.btn-voltar {
   background: #1b5a6c;
   color: #fff;
   margin: 4px 0;
   border-radius: 10px;
   width: 75%; }
-  .quick-access .nav-link:hover {
+  .quick-access .nav-link:hover,
+  .btn-add:hover,
+  .btn-voltar:hover {
+    opacity: 0.8;
+    color: #fff; }
+
+/* Forms */
+.mainform {
+  display: none; }
+
+/* Slides */
+.ger-default {
+  margin: 50px 0; }
+
+.btn-default {
+  width: 100%;
+  margin: 8px 0; }
+
+.btn-form {
+  background: #1b5a6c;
+  border-color: #1b5a6c;
+  color: #fff;
+  width: 100%; }
+  .btn-form:hover {
+    background: #1b5a6c;
+    border-color: #1b5a6c;
     opacity: 0.8; }
+
+.ger-slides span,
+.ger-servicos span {
+  padding: 0 5px; }
+
+/* Servicos */
+.form-border {
+  border-radius: 10px;
+  border: 1px solid #1b8eaf;
+  padding: 15px;
+  background-color: #fff; }
+
+.form-border h3 {
+  text-align: end;
+  color: #1b5a6c;
+  border-bottom: 1px solid #1b5a6c;
+  margin-bottom: 40px; }
+
+/* Acesso rapido */
+.access {
+  margin: 50px 0; }
 
 /* Footer */
 .footer {

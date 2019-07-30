@@ -14,30 +14,30 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<p>Envie uma mensagem e entreremos em contato com você.</p>
-						<form name="contato" action="" method="post">
+						<form name="contato" action="acts/acts.contato.php" method="post" enctype="multipart/form-data">
 						  <div class="form-group">
 						    <div class="col-md-12 mb-12">					      
-						      <input type="text" class="form-control" id="validationDefault01" placeholder="Nome" required>
+						      <input type="text" class="form-control" name="nome" id="validationDefault01" placeholder="Nome" required>
 						    </div>
 						  </div>
 						  <div class="form-group">
 						    <div class="col-md-12 mb-12">					      
-						      <input type="email" class="form-control" id="validationDefault02" placeholder="E-mail" required>
+						      <input type="email" class="form-control" name="email" id="validationDefault02" placeholder="E-mail" required>
 						    </div>
 						  </div> 
 						  <div class="form-group">
 						    <div class="col-md-12 mb-12">
-						      <input type="text" class="form-control" id="validationDefault02" placeholder="Telefone"  required>
+						      <input type="text" class="form-control" name="telefone" id="validationDefault02" placeholder="Telefone"  required>
 						    </div>
 						  </div>
 						  <div class="form-group">  
 						    <div class="col-md-12 mb-12">
-						      <input type="text" class="form-control" id="validationDefault02" placeholder="Assunto"  required>
+						      <input type="text" class="form-control" name="assunto" id="validationDefault02" placeholder="Assunto"  required>
 						    </div>
 						  </div>
 						  <div class="form-group">  
 						    <div class="col-md-12 mb-12">
-						      <textarea class="form-control" id="" rows="5" placeholder="Mensagem" required></textarea>
+						      <textarea class="form-control" id="" name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
 						    </div>
 						  </div>
 						  <div class="form-group">
