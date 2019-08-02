@@ -175,6 +175,10 @@ body{
 	margin-bottom: 60px;
 }
 
+.informative .card-default{
+	height: 420px;
+}
+
 .informative .col-sm-4{
 	margin-bottom: 40px;
 }
@@ -489,6 +493,11 @@ body{
 	background-color: #1b5a6c;
 	border: 1px solid #1b5a6c;
 	border-radius: 0px !important;
+}
+
+.card-video iframe{
+	width: 280px !important;
+	height: 157px !important
 }
 
 .card-video .card-title{

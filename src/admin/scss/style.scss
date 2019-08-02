@@ -56,6 +56,7 @@ body{
 	}
 }
 
+
 /* Header */
 
 .circle {
@@ -115,9 +116,9 @@ body{
 }
 
 .btn-form{
-	background: #1b5a6c;
-	border-color: #1b5a6c;
-	color: #fff;
+	background: #1b5a6c !important;
+	border-color: #1b5a6c !important;
+	color: #fff !important;
 	width: 100%;
 	&:hover{
 		background: #1b5a6c;
@@ -129,6 +130,13 @@ body{
 .ger-slides span,
 .ger-servicos span{
 	padding: 0 5px;
+}
+
+/* Videos */
+
+.media iframe{
+	width: 337px !important;
+	height: 157px !important;
 }
 
 /* Servicos */

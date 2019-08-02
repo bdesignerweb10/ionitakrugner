@@ -1,5 +1,7 @@
 <?php
 	require_once("header.php");
+	$informativos = $conn->query("select titulo, descricao, data_postagem, tbl_informativos.ativo, nome from tbl_informativos inner join tbl_informativos_img on tbl_informativos.id_img = tbl_informativos_img.id_img
+where tbl_informativos.ativo = 0") or trigger_error($conn->error);
 ?>
 <main>
 	<div class="container-fluid capa">
@@ -8,7 +10,11 @@
 		</div><!-- row -->
 	</div><!-- container -->
 	<div class="container informative">
-		<div class="row">			
+		<div class="row">		
+			<?php								
+				if ($informativos && $informativos->num_rows > 0) {
+			  	while($info = $informativos->fetch_object()) {	
+		 	?>	
 			<div class="col-sm-4">
 				<div class="card card-default">
 					<div class="row no-gutters">				    
@@ -16,14 +22,14 @@
 				      		<div class="card-body">
 				      			<div class="row">
 					      			<div class="col-sm-5">
-					      				<img src="img/informativos/info.png">
+					      				<img src="img/informativos/<?php echo $info->nome; ?>">
 					      			</div>
 					      			<div class="col-sm-7">
-						        		<h5 class="card-title headline">Lorem ipsum dolor sit amet, a faucibus purus.</h5>
-								        <p class="card-title date">19 de junho de 2019</p>
+						        		<h5 class="card-title headline"><?php echo $info->titulo; ?></h5>
+								        <p class="card-title date"><?php if($info->data_postagem != null) {$timestamp = strtotime($info->data_postagem); echo date('d/m/Y', $timestamp);} else {echo 'Sem data';} ?></p>
 								    </div>
 								    <div class="col-sm-12">    
-								        <p class="card-text">Vivamus et rutrum nunc, a faucibus purus. Curabitur non nibh justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur blandit, odio ac sollicitudin hendrerit, mi nunc pretium diam, eu iaculis arcu arcu at felis. Donec consectetur vulputate nunc vitae tempus. Sed in orci ipsum. Aenean a odio tempus, placerat turpis in, cursus nibh. Nam vel lectus quam. Ut a diam sed diam interdum porttitor. Maecenas ante metus, consectetur ultricies commodo […]</p>
+								        <p class="card-text"><?php echo nl2br (substr ($info->descricao, 0)) ?></p>
 								    </div>    
 						    	</div><!-- row -->
 				      		</div>
@@ -31,116 +37,9 @@
 				  	</div>
 				</div>	
 			</div><!-- col-sm-4-->
-			<div class="col-sm-4">
-				<div class="card card-default">
-					<div class="row no-gutters">				    
-				    	<div class="col-md-12">
-				      		<div class="card-body">
-				      			<div class="row">
-					      			<div class="col-sm-5">
-					      				<img src="img/informativos/info.png">
-					      			</div>
-					      			<div class="col-sm-7">
-						        		<h5 class="card-title headline">Lorem ipsum dolor sit amet, a faucibus purus.</h5>
-								        <p class="card-title date">19 de junho de 2019</p>
-								    </div>
-								    <div class="col-sm-12">    
-								        <p class="card-text">Vivamus et rutrum nunc, a faucibus purus. Curabitur non nibh justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur blandit, odio ac sollicitudin hendrerit, mi nunc pretium diam, eu iaculis arcu arcu at felis. Donec consectetur vulputate nunc vitae tempus. Sed in orci ipsum. Aenean a odio tempus, placerat turpis in, cursus nibh. Nam vel lectus quam. Ut a diam sed diam interdum porttitor. Maecenas ante metus, consectetur ultricies commodo […]</p>
-								    </div>    
-						    	</div><!-- row -->
-				      		</div>
-				    	</div>
-				  	</div>
-				</div>	
-			</div><!-- col-sm-4-->
-			<div class="col-sm-4">
-				<div class="card card-default">
-					<div class="row no-gutters">				    
-				    	<div class="col-md-12">
-				      		<div class="card-body">
-				      			<div class="row">
-					      			<div class="col-sm-5">
-					      				<img src="img/informativos/info.png">
-					      			</div>
-					      			<div class="col-sm-7">
-						        		<h5 class="card-title headline">Lorem ipsum dolor sit amet, a faucibus purus.</h5>
-								        <p class="card-title date">19 de junho de 2019</p>
-								    </div>
-								    <div class="col-sm-12">    
-								        <p class="card-text">Vivamus et rutrum nunc, a faucibus purus. Curabitur non nibh justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur blandit, odio ac sollicitudin hendrerit, mi nunc pretium diam, eu iaculis arcu arcu at felis. Donec consectetur vulputate nunc vitae tempus. Sed in orci ipsum. Aenean a odio tempus, placerat turpis in, cursus nibh. Nam vel lectus quam. Ut a diam sed diam interdum porttitor. Maecenas ante metus, consectetur ultricies commodo […]</p>
-								    </div>    
-						    	</div><!-- row -->
-				      		</div>
-				    	</div>
-				  	</div>
-				</div>	
-			</div><!-- col-sm-4-->
-			<div class="col-sm-4">
-				<div class="card card-default">
-					<div class="row no-gutters">				    
-				    	<div class="col-md-12">
-				      		<div class="card-body">
-				      			<div class="row">
-					      			<div class="col-sm-5">
-					      				<img src="img/informativos/info.png">
-					      			</div>
-					      			<div class="col-sm-7">
-						        		<h5 class="card-title headline">Lorem ipsum dolor sit amet, a faucibus purus.</h5>
-								        <p class="card-title date">19 de junho de 2019</p>
-								    </div>
-								    <div class="col-sm-12">    
-								        <p class="card-text">Vivamus et rutrum nunc, a faucibus purus. Curabitur non nibh justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur blandit, odio ac sollicitudin hendrerit, mi nunc pretium diam, eu iaculis arcu arcu at felis. Donec consectetur vulputate nunc vitae tempus. Sed in orci ipsum. Aenean a odio tempus, placerat turpis in, cursus nibh. Nam vel lectus quam. Ut a diam sed diam interdum porttitor. Maecenas ante metus, consectetur ultricies commodo […]</p>
-								    </div>    
-						    	</div><!-- row -->
-				      		</div>
-				    	</div>
-				  	</div>
-				</div>	
-			</div><!-- col-sm-4-->
-			<div class="col-sm-4">
-				<div class="card card-default">
-					<div class="row no-gutters">				    
-				    	<div class="col-md-12">
-				      		<div class="card-body">
-				      			<div class="row">
-					      			<div class="col-sm-5">
-					      				<img src="img/informativos/info.png">
-					      			</div>
-					      			<div class="col-sm-7">
-						        		<h5 class="card-title headline">Lorem ipsum dolor sit amet, a faucibus purus.</h5>
-								        <p class="card-title date">19 de junho de 2019</p>
-								    </div>
-								    <div class="col-sm-12">    
-								        <p class="card-text">Vivamus et rutrum nunc, a faucibus purus. Curabitur non nibh justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur blandit, odio ac sollicitudin hendrerit, mi nunc pretium diam, eu iaculis arcu arcu at felis. Donec consectetur vulputate nunc vitae tempus. Sed in orci ipsum. Aenean a odio tempus, placerat turpis in, cursus nibh. Nam vel lectus quam. Ut a diam sed diam interdum porttitor. Maecenas ante metus, consectetur ultricies commodo […]</p>
-								    </div>    
-						    	</div><!-- row -->
-				      		</div>
-				    	</div>
-				  	</div>
-				</div>	
-			</div><!-- col-sm-4-->
-			<div class="col-sm-4">
-				<div class="card card-default">
-					<div class="row no-gutters">				    
-				    	<div class="col-md-12">
-				      		<div class="card-body">
-				      			<div class="row">
-					      			<div class="col-sm-5">
-					      				<img src="img/informativos/info.png">
-					      			</div>
-					      			<div class="col-sm-7">
-						        		<h5 class="card-title headline">Lorem ipsum dolor sit amet, a faucibus purus.</h5>
-								        <p class="card-title date">19 de junho de 2019</p>
-								    </div>
-								    <div class="col-sm-12">    
-								        <p class="card-text">Vivamus et rutrum nunc, a faucibus purus. Curabitur non nibh justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur blandit, odio ac sollicitudin hendrerit, mi nunc pretium diam, eu iaculis arcu arcu at felis. Donec consectetur vulputate nunc vitae tempus. Sed in orci ipsum. Aenean a odio tempus, placerat turpis in, cursus nibh. Nam vel lectus quam. Ut a diam sed diam interdum porttitor. Maecenas ante metus, consectetur ultricies commodo […]</p>
-								    </div>    
-						    	</div><!-- row -->
-				      		</div>
-				    	</div>
-				  	</div>
-				</div>	
-			</div><!-- col-sm-4-->
+				<?php } ?> 
+			<?php } ?>
+			
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4 pagination-nav">
 				<nav aria-label="Page navigation example">

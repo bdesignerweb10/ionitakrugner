@@ -1,3 +1,6 @@
+<?php 
+	require_once("acts/connect.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +50,7 @@
 							<a href=""><i class="fab fa-youtube"></i></a>
 						</div><!-- col-sm-12-->
 						<div class="col-sm-12 logo">
-							<img src="img/logo.png">
+							<img src="img/logo.png">								
 						</div><!-- col-sm-12-->
 					</div><!-- row-->
 				</div><!-- col-sm-5-->

@@ -1,5 +1,6 @@
 <?php
 	require_once('header.php');
+	$servicos = $conn->query("select * from tbl_servicos order by id") or trigger_error($conn->error);
 ?>
 <main class="maintable">
 	<div class="container">
@@ -15,28 +16,37 @@
 				      <th scope="col">#</th>
 				      <th scope="col">Nome do Serviço</th>
 				      <th scope="col">Descrição do Serviço</th>
+				      <th scope="col">Ativo</th>
 				      <th scope="col">Opções</th>
 				    </tr>
 				  </thead>
 				  <tbody>
+				  <?php if ($servicos && $servicos->num_rows > 0) {
+			    		while($service = $servicos->fetch_object()) {
+			    		$id = $service->id;
+				   ?>
 				    <tr>
-				      <th scope="row">1</th>
-				      <td>Serviço 1</td>
-				      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus [...]</td>
-				      <td><span><a href="" class="text-primary"><i class="fas fa-edit"></i></a></span><span><a href="" class="text-danger"><i class="fas fa-trash-alt"></i></a></span></td>
+				      <th scope="row"><?php echo $service->id; ?></th>
+				      <td><?php echo $service->nome; ?></td>
+				      <td><?php echo nl2br (substr ($service->descricao, 0, 100)); ?>...</td>
+				      <?php if ($service->ativo == 0) { 
+			        	$ativo ='fas fa-check text-success'; 
+				      	} else { 
+				      		$ativo ='fas fa-times text-danger';
+				      	} 
+				      ?>
+				      <td><span><i class='<?php echo $ativo; ?>'></span></td>
+				      <td>
+				      	<span><a href="" class="text-primary btn-edit-servicos" data-id="<?php echo $id;?>" alt="Editar Serviço <?php echo $service->id; ?>" title="Editar serviços <?php echo $service->id; ?>"><i class="fas fa-edit"></i></a></span>
+				      	<span><a href="" class="text-danger btn-del-servicos" data-id="<?php echo $id;?>" alt="Remover serviço <?php echo $service->id; ?>" title="Remover serviço <?php echo $service->id; ?>"><i class="fas fa-trash-alt"></i></a></span>
+				      </td>
 				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Serviço 2</td>
-				      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus [...]</td>
-				      <td><span><a href="" class="text-primary"><i class="fas fa-edit"></i></a></span><span><a href="" class="text-danger"><i class="fas fa-trash-alt"></i></a></span></td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Serviço 3</td>
-				      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus [...]</td>
-				      <td><span><a href="" class="text-primary"><i class="fas fa-edit"></i></a></span><span><a href="" class="text-danger"><i class="fas fa-trash-alt"></i></a></span></td>
-				    </tr>
+				    <?php } ?>			        	
+						<?php } else { ?>					
+							<tr>
+					        	<td colspan="5" align="center">Não há dados a serem exibidos para a listagem.</td>
+				            </tr>
+					<?php } ?>
 				  </tbody>
 				</table>
 			</div><!-- col-sm-12-->
@@ -53,34 +63,38 @@
 			</div><!-- col-sm-4-->	
 			<div class="col-sm-8 form-border">	
 				<h3>Gerenciamento de Serviços</h3>			
-				<form id="form-servico" class="form-panel" data-toggle="validator" action="acts/acts.servicos.php" method="POST">
-				  <div class="form-group col-sm-12">
-				    <label for="formGroupExampleInput">Nome do Serviço</label>
-				    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Slide">
+				<form id="form-servicos" class="form-row" data-toggle="validator" action="acts/acts.servicos.php" method="POST">
+				  <div class="form-group col-sm-1">
+					<label for="id">ID</label>
+			    	<input type="number" class="form-control" id="id" name="id" aria-describedby="id" maxlength="11" disabled />
+				  </div>	
+				  <div class="form-group col-sm-11">
+				    <label for="nome">Nome do Serviço</label>
+				    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Serviço" required>
 				  </div>
 				  <div class="form-group col-sm-12">
-				    <label for="exampleFormControlFile1">Imagem do Serviço</label>
-				    <input type="file" class="form-control-file" id="img" name="img">
+				    <label for="img">Imagem do Serviço</label>
+				    <input type="file" class="form-control-file" id="img" name="img" required>
 				  </div>
 				  <div class="form-group col-sm-12">
 				    	<textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Descrição do serviço" required></textarea>
 				  </div>
-				  <div class="form-group col-sm-4">
-				      <label for="inputState">Ativo?</label>
-				      <select id="ativo" name="ativo" class="form-control">
-				        <option value="0" selected>Sim</option>
-				        <option value="1">Não</option>
-				      </select>
+				  <div class="form-group col-sm-12">				      
+				      <div class="checkbox" style="margin-left: 20px;">
+						<label>
+							<input type="checkbox" id="ativo" name="ativo" data-toggle="toggle" data-on="Sim" data-off="Não" data-onstyle="success" data-offstyle="danger">
+							Se o estiver ativo, aparecerá na página inicial do site
+						</label>
+					   </div>
 			      </div>
-				  <div class="row">
-					  <div class="col-sm-9"></div>
-					  <div class="col-sm-3">
-					  	<button type="submit" class="btn btn-form btn-primary mb-2" id="btn-salvar-servico">Salvar Serviço</button>
-					  </div>
+				  <div class="col-sm-8"></div>
+				  <div class="col-sm-8"></div>				 
+				  <div class="col-sm-4">
+				  	<button type="submit" class="btn btn-form btn-primary mb-2 form-control" id="btn-salvar-servico">Salvar Serviço</button>
 				  </div>
 				</form>
 			</div><!-- col-sm-8-->
-			<div class="col-sm-4">
+			<div class="col-sm-4 access">
 				<?php
 					require_once('acesso-rapido.php');
 				?>

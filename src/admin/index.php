@@ -20,9 +20,6 @@
 					      <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"  required>
 					    </div>					    
 					  </div>
-
-					  <label><input type="checkbox" id="lembrar" name="lembrar" data-toggle="toggle" data-on="Sim" data-off="Não" data-onstyle="success" data-offstyle="danger"> Mantenha-me conectado</label>
-							
 					  <p><a href="">Esqueceu sua senha? <strong>Clique aqui</strong></a></p>
 					  <button id="btn-login" name="submit" class="btn btn-primary" type="submit">Entrar</button>
 					</form>

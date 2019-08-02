@@ -1,18 +1,23 @@
 <?php
 	require_once("header.php");
+	$slides = $conn->query("select nome, link, img from tbl_slides where ativo = 0") or trigger_error($conn->error);
+	$video = $conn->query("select titulo,url, ativo from tbl_videos where ativo = 0 order by id_video desc limit 1;
+") or trigger_error($conn->error);	
+	$informativos = $conn->query("select * from tbl_informativos where ativo = 0 order by id_info desc LIMIT 4 ") or trigger_error($conn->error);
 ?>
 <main>
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 	  <div class="carousel-inner">
-	    <div class="carousel-item active">
-	      <img src="img/slides/banner.jpg" class="d-block w-100" alt="...">
+	  	<?php 		
+	  		$count = 0;								
+			if ($slides && $slides->num_rows > 0) {
+			  	while($banner = $slides->fetch_object()) {	
+		 ?>
+	    <div class="carousel-item <?php if($count == 0) echo 'active'; ?>" data-interval="10000">	      	
+	      <img src="img/slides/<?php echo $banner->img; ?>" class="d-block w-100" alt="...">
 	    </div>
-	    <div class="carousel-item">
-	      <img src="img/slides/banner.jpg" class="d-block w-100" alt="...">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="img/slides/banner.jpg" class="d-block w-100" alt="...">
-	    </div>
+	    	<?php $count++; } ?> 
+		<?php } ?>		    
 	  </div>
 	  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,42 +33,22 @@
 			<div class="col-sm-4">
 				<div class="card card-index-mob" style="width: 18rem; height: 330px;">
 				  <div class="card-body">
-				    <h5 class="card-title">Informativos</h5>				    
+				    <h5 class="card-title">Informativos</h5>
+				    <?php								
+					if ($informativos && $informativos->num_rows > 0) {
+					  	while($info = $informativos->fetch_object()) {	
+				 	?>				    
 				    <div class="row">
 				    	<div class="col-sm-1 shape">
 				    		<i class="fas fa-angle-right"></i>
-				    	</div><!-- col-sm-1-->
+				    	</div><!-- col-sm-1-->				    	
 				    	<div class="col-sm-10">
-				    		<p class="card-text"><a href=""> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p>
-				    	</div>			    	
+				    		<p class="card-text"><a href="informativos.php"> <?php echo $info->titulo; ?></a></p>
+				    	</div>		    	
 				    </div><!-- row-->
 				    <div class="divider"></div>
-				    <div class="row">
-				    	<div class="col-sm-1 shape">
-				    		<i class="fas fa-angle-right"></i>
-				    	</div><!-- col-sm-1-->
-				    	<div class="col-sm-10">
-				    		<p class="card-text"><a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p>
-				    	</div>			    	
-				    </div><!-- row-->
-				    <div class="divider"></div>
-				    <div class="row">
-				    	<div class="col-sm-1 shape">
-				    		<i class="fas fa-angle-right"></i>
-				    	</div><!-- col-sm-1-->
-				    	<div class="col-sm-10">
-				    		<p class="card-text"><a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p>
-				    	</div>			    	
-				    </div><!-- row-->
-				    <div class="divider"></div>
-				    <div class="row">
-				    	<div class="col-sm-1 shape">
-				    		<i class="fas fa-angle-right"></i>
-				    	</div><!-- col-sm-1-->
-				    	<div class="col-sm-10">
-				    		<p class="card-text"><a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p>
-				    	</div>			    	
-				    </div><!-- row-->
+				    <?php } ?> 
+				  		<?php } ?>
 				  </div>				  
 				</div>
 				<div class="col-sm-10 btns-card">
@@ -110,9 +95,15 @@
 				<div class="card card-video" style="width: 20rem;">
 				  <div class="card-body">
 				    <h5 class="card-title">Vídeos</h5>
-				    <h6 class="card-subtitle mb-2 text-muted">Delegacia da Mulher: OAB reivindica expediente 24 hs</h6>
-				    <iframe width="280" height="157" src="https://www.youtube.com/embed/SxrR4zrstbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				    <?php								
+						if ($video && $video->num_rows > 0) {
+						  	while($play = $video->fetch_object()) {	
+					 ?>
+				    <h6 class="card-subtitle mb-2 text-muted"><?php echo $play->titulo; ?></h6>
+				    <?php echo $play->url; ?>
 				  </div>
+				  	<?php } ?> 
+				  <?php } ?>
 				 	<div class="col-sm-11 btns-card">	
 						<a href="" class="btn btn-card btn-video">Veja mais</a>
 					</div>					
