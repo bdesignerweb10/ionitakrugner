@@ -1,7 +1,7 @@
 <?php
 	require_once('header.php');
 	$informativos = $conn->query("select * from tbl_informativos order by id_info") or trigger_error($conn->error);
-	$info_img = $conn->query("select * from tbl_informativos_img where ativo = 0") or trigger_error($conn->error);
+	$info_img = $conn->query("select * from tbl_informativos_img where ativo = 1") or trigger_error($conn->error);
 ?>
 <main class="maintable">
 	<div class="container">
@@ -30,7 +30,7 @@
 				      <th scope="row"><?php echo $info->id_info; ?></th>
 				      <td><?php echo $info->titulo; ?></td>
 				      <td><?php if($info->data_postagem != null) {$timestamp = strtotime($info->data_postagem); echo date('d/m/Y', $timestamp);} else {echo 'Sem data';} ?></td>
-				      <?php if ($info->ativo == 0) { 
+				      <?php if ($info->ativo == 1) { 
 			        	$ativo ='fas fa-check text-success'; 
 				      	} else { 
 				      		$ativo ='fas fa-times text-danger';

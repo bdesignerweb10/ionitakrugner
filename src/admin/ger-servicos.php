@@ -29,7 +29,7 @@
 				      <th scope="row"><?php echo $service->id; ?></th>
 				      <td><?php echo $service->nome; ?></td>
 				      <td><?php echo nl2br (substr ($service->descricao, 0, 100)); ?>...</td>
-				      <?php if ($service->ativo == 0) { 
+				      <?php if ($service->ativo == 1) { 
 			        	$ativo ='fas fa-check text-success'; 
 				      	} else { 
 				      		$ativo ='fas fa-times text-danger';

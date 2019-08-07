@@ -18,7 +18,7 @@
 				  <?php echo $play->url; ?>
 				  <div class="card-body">
 				    <h5 class="card-title"><?php echo $play->titulo; ?></h5>
-				    <?php if ($play->ativo == 0) { 
+				    <?php if ($play->ativo == 1) { 
 			        	$ativo ='fas fa-check text-success'; 
 			      	} else { 
 			      		$ativo ='fas fa-times text-danger';

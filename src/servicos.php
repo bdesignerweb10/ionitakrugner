@@ -1,6 +1,6 @@
 <?php
 	require_once("header.php");
-	$servicos = $conn->query("select * from tbl_servicos where ativo = 0") or trigger_error($conn->error);
+	$servicos = $conn->query("select * from tbl_servicos where ativo = 1") or trigger_error($conn->error);
 ?>
 <main>
 	<div class="container-fluid capa">
@@ -20,25 +20,25 @@
 					  		$menu .= '<a class="list-group-item list-group-item-action '. ($service->id == 1 ? "active" : "") .'" id="'.$service->id.'" data-toggle="list" href="#service'.$service->id.'" role="tab" aria-controls="home">'.$service->nome.' <i class="fas fa-angle-right"></i></a>';
 
 							$cont .= '<div class="tab-pane fade show '. ($service->id == 1 ? "active" : "") .'" id="service'.$service->id.'" role="tabpanel" aria-labelledby="'.$service->id.'">
-			      			<div class="card card-default mb-3">
-				  				<div class="row no-gutters">
-						    		<div class="col-md-12">
-						      			<img src="img/servicos/'.$service->img.'" class="card-img" alt="...">
-						    		</div>
-				    				<div class="col-md-12">
-				      					<div class="card-body">
-				        					<h5 class="card-title headline">'.$service->nome.'</h5>
-				        					<p class="card-text">'.nl2br (substr ($service->descricao, 0)).'</p>
-				      					</div>
-				    				</div>
-				    				
-				  				</div>
-							</div>
-						</div>';
+					      			<div class="card card-default mb-3">
+						  				<div class="row no-gutters">
+								    		<div class="col-md-12">
+								      			<img src="img/servicos/'.$service->img.'" class="card-img" alt="...">
+								    		</div>
+						    				<div class="col-md-12">
+						      					<div class="card-body">
+						        					<h5 class="card-title headline">'.$service->nome.'</h5>
+						        					<p class="card-text">'.nl2br (substr ($service->descricao, 0)).'</p>
+						      					</div>
+						    				</div>
+						    				
+						  				</div>
+									</div>
+								</div>';
 			  				}
 			  			}		
 				 		?>
-			      		<!--<a class="list-group-item list-group-item-action active" data-toggle="list" href="#service<?php echo $service->id; ?>" role="tab" aria-controls="home"><?php echo $service->nome; ?> <i class="fas fa-angle-right"></i></a>-->
+			      		
 			      		<?php echo $menu; ?>
 			      		
 			    	</div>

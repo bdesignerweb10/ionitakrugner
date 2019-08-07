@@ -15,12 +15,12 @@
 
 					$id = $_GET['id']; // $_SESSION["fake_id"];
 
-			    	$qry_videos = $conn->query("SELECT id_video, titulo, url,ativo FROM tbl_videos WHERE id_video = $id") or trigger_error("27005 - " . $conn->error);
+			    	$qry_blog = $conn->query("SELECT id_blog, nome,descricao,ativo, destaque, data_publicacao, id_cat FROM tbl_blog WHERE id_blog = $id") or trigger_error("27005 - " . $conn->error);
 
-					if ($qry_videos && $qry_videos->num_rows > 0) {
-						$dados = "";						
-		    			while($media = $qry_videos->fetch_object()) {		    				
-		    				$dados = '{"id" : "' . $media->id_video . '", "nome" : "' . $media->titulo . '", "link" : "'. str_replace('"', "'", $media->url) .'"  ,"ativo" : "' . $media->ativo . '"}';
+					if ($qry_blog && $qry_blog->num_rows > 0) {
+						$dados = "";
+		    			while($post = $qry_blog->fetch_object()) {
+		    				$dados = '{"id" : "' . $post->id_blog . '", "nome" : "' . $post->nome . '", "descricao" : "'. $post->descricao .'"  ,"ativo" : "' . $post->ativo . '", "destaque" : "'. $post->destaque.'", "grupo" : "'. $post->id_cat.'"}';
 		    			}
 
 						echo '{"succeed": true, "dados": ' . $dados . '}';
@@ -43,13 +43,13 @@
 						$errMsg = "";
 
 						if(!isset($_POST["nome"]) || empty($_POST["nome"])) {
-							$errMsg .= "Titulo do Video";
+							$errMsg .= "Titulo do Post";
 							$isValid = false;
 						}
 						
 
-						if(!isset($_POST["link"]) || empty($_POST["link"])) {
-							$errMsg .= "link do video";
+						if(!isset($_POST["descricao"]) || empty($_POST["descricao"])) {
+							$errMsg .= "Descrição do post";
 							$isValid = false;
 						}						
 
@@ -59,19 +59,35 @@
 							exit();
 						}
 						else {
-							
-							$titulo = $_POST["nome"];
-							$url = $_POST["link"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");	
-							
 
-							$qry_videos = "INSERT INTO tbl_videos (titulo,url ,ativo) VALUES ('" . $titulo . "','" . $url . "','" . $ativo . "')";
+							if(isset($_FILES['img'])) {
+								//Pegando extensão do arquivo								
+								$ext = strtolower(substr($_FILES['img']['name'],-4)); 
+								//Definindo um novo nome para o arquivo
+							    $new_name = date("Y.m.d-H.i.s") . $ext; 
+							    //Diretório para uploads 
+							    $dir = '../../img/blog/'; 
+							    //Fazer upload do arquivo
+							    move_uploaded_file($_FILES['img']['tmp_name'], $dir.$new_name); 
+							    //Permissão na pasta (Linux)
+							    chmod("../../img/blog/" . $new_name, 644);
+							}
 
-							if ($conn->query($qry_videos) === TRUE) {
+							$imagem = $_FILES['img']['name'];
+							$categoria = $_POST["grupo"];
+							$nome = $_POST["nome"];
+							$descricao= $_POST["descricao"];
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
+							$destaque = (isset($_POST["destaque"]) && $_POST["destaque"] == "1" ? "1" : "0");		
+							$data_postagem = date('Y-m-d');
+
+							$qry_blog = "INSERT INTO tbl_blog (nome, img ,descricao ,ativo, destaque, data_publicacao, id_cat) VALUES ('" . $nome . "', '" . $new_name . "' ,'" . $descricao . "', '". $ativo ."' ,'" . $destaque . "','".$data_postagem."','".$categoria."')";
+
+							if ($conn->query($qry_blog) === TRUE) {
 								$conn->commit();
 								echo '{"succeed": true}';
 							} else {
-						        throw new Exception("Erro ao inserir o slide: " . $qry_videos . "<br>" . $conn->error);
+						        throw new Exception("Erro ao inserir o slide: " . $qry_blog . "<br>" . $conn->error);
 							}							
 						}
 					}
@@ -102,12 +118,12 @@
 						$errMsg = "";
 
 						if(!isset($_POST["nome"]) || empty($_POST["nome"])) {
-							$errMsg .= "Titulo do Video";
+							$errMsg .= "Titulo do Post";
 							$isValid = false;
 						}					
 
-						if(!isset($_POST["link"]) || empty($_POST["link"])) {
-							$errMsg .= "Link do video";
+						if(!isset($_POST["descricao"]) || empty($_POST["descricao"])) {
+							$errMsg .= "Descrição do post";
 							$isValid = false;
 						}
 
@@ -116,22 +132,44 @@
 							$conn->rollback();
 							exit();
 						}
-						else {							
-							
-							$titulo = $_POST["nome"];						
-							$url = $_POST["link"];							
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
+						else {		
 
-							$qry_videos = "UPDATE tbl_videos 
-											  SET titulo = '" . $titulo . "',
-											  	  url = '" . $url . "',
-											      ativo = " . $ativo . "
-											WHERE id_video = $id";
-							if ($conn->query($qry_videos) === TRUE) {
+							if(isset($_FILES['img'])) {
+								//Pegando extensão do arquivo								
+								$ext = strtolower(substr($_FILES['img']['name'],-4)); 
+								//Definindo um novo nome para o arquivo
+							    $new_name = date("Y.m.d-H.i.s") . $ext; 
+							    //Diretório para uploads 
+							    $dir = '../../img/blog/'; 
+							    //Fazer upload do arquivo
+							    move_uploaded_file($_FILES['img']['tmp_name'], $dir.$new_name); 
+							    //Permissão na pasta (Linux)
+							    chmod("../../img/blog/" . $new_name, 644);							   
+							}
+
+							$imagem = $_FILES['img']['name'];
+							$categoria = $_POST["grupo"];
+							$nome = $_POST["nome"];
+							$descricao= $_POST["descricao"];
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
+							$destaque = (isset($_POST["destaque"]) && $_POST["destaque"] == "1" ? "1" : "0");	
+							$data_postagem = date('d/m/y');
+							
+
+							$qry_blog = "UPDATE tbl_blog 
+											  SET nome = '" . $nome . "',
+											  	  img = '" . $new_name . "',
+											      descricao = '" . $descricao . "',
+											      ativo = " . $ativo . ",
+											      destaque = " . $destaque . ",
+											      data_publicacao = '" . $data_postagem . "',
+											      id_cat = " . $categoria . "
+											WHERE id_blog = $id";
+							if ($conn->query($qry_blog) === TRUE) {
 								$conn->commit();
 								echo '{"succeed": true}';
 							} else {
-						        throw new Exception("Erro ao alterar o evento: " . $qry_videos . "<br>" . $conn->error);
+						        throw new Exception("Erro ao alterar o evento: " . $qry_blog . "<br>" . $conn->error);
 							}
 						}
 					}
@@ -157,18 +195,18 @@
 
 				$id = $_GET['id']; // $_SESSION["fake_id"];
 
-				$qrydel_videos = "DELETE FROM tbl_videos WHERE id_video = $id";
-				if ($conn->query($qrydel_videos) === TRUE) {
+				$qrydel_blog = "DELETE FROM tbl_blog WHERE id_blog = $id";
+				if ($conn->query($qrydel_blog) === TRUE) {
 				
-					$qrydelvideos = "DELETE FROM tbl_videos WHERE id_video = $id";
-					if ($conn->query($qrydelvideos) === TRUE) {
+					$qrydelblog = "DELETE FROM tbl_blog WHERE id_blog = $id";
+					if ($conn->query($qrydelblog) === TRUE) {
 						$conn->commit();
 						echo '{"succeed": true}';
 					} else {
-				        throw new Exception("Erro ao remover o evento: " . $qrydelvideos . "<br>" . $conn->error);
+				        throw new Exception("Erro ao remover o evento: " . $qrydelblog . "<br>" . $conn->error);
 					}
 				} else {
-			        throw new Exception("Erro ao remover o evento: " . $qrydel_videos . "<br>" . $conn->error);
+			        throw new Exception("Erro ao remover os times do evento: " . $qrydel_blog . "<br>" . $conn->error);
 				}
 			} catch(Exception $e) {
 				$conn->rollback();

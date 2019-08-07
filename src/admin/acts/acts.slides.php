@@ -48,10 +48,10 @@
 						}
 						
 
-						if(!isset($_POST["link"]) || empty($_POST["link"])) {
-							$errMsg .= "link do slide";
+						/*if(!isset($_POST["img"]) || empty($_POST["img"])) {
+							$errMsg .= "Imagems do slide";
 							$isValid = false;
-						}						
+						}*/						
 
 						if(!$isValid) {
 							echo '{"succeed": false, "errno": 27006, "title": "Erro em um ou mais campos do formulário!", "erro": "Ocorreram erros nos seguintes campos do formulário: <b>' . $errMsg . '</b>"}';
@@ -76,7 +76,7 @@
 							$imagem = $_FILES['img']['name'];
 							$nome = $_POST["nome"];
 							$link = $_POST["link"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "on" ? "0" : "1");	
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");	
 							
 
 							$qry_slides = "INSERT INTO tbl_slides (nome,link, img ,ativo) VALUES ('" . $nome . "','" . $link . "', '". $new_name ."' ,'" . $ativo . "')";
@@ -119,11 +119,7 @@
 							$errMsg .= "Titulo do Slide";
 							$isValid = false;
 						}					
-
-						if(!isset($_POST["link"]) || empty($_POST["link"])) {
-							$errMsg .= "Link do slide";
-							$isValid = false;
-						}
+						
 
 						if(!$isValid) {
 							echo '{"succeed": false, "errno": 27010, "title": "Erro em um ou mais campos do formulário!", "erro": "Ocorreram erros nos seguintes campos do formulário: <b>' . $errMsg . '</b>"}';
@@ -147,8 +143,8 @@
 							$imagem = $_FILES['img']['name'];
 							$nome = $_POST["nome"];						
 							$link = $_POST["link"];
-							$img = $_FILES["img"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "on" ? "0" : "1");
+							$img = $_FILES["img"];							
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
 							
 
 							$qry_slides = "UPDATE tbl_slides 

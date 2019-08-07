@@ -1,7 +1,7 @@
 <?php
 	require_once("header.php");
 	$informativos = $conn->query("select titulo, descricao, data_postagem, tbl_informativos.ativo, nome from tbl_informativos inner join tbl_informativos_img on tbl_informativos.id_img = tbl_informativos_img.id_img
-where tbl_informativos.ativo = 0") or trigger_error($conn->error);
+where tbl_informativos.ativo = 1") or trigger_error($conn->error);
 ?>
 <main>
 	<div class="container-fluid capa">

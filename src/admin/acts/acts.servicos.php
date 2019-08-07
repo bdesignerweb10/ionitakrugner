@@ -20,7 +20,7 @@
 					if ($qry_servicos && $qry_servicos->num_rows > 0) {
 						$dados = "";
 		    			while($service = $qry_servicos->fetch_object()) {
-		    				$dados = '{"id" : "' . $service->id . '", "nome" : "' . $service->nome . '", "img" : "'. $service->img .'"  ,"descricao" : "' . $service->descricao . '","ativo" : "' . $slides->ativo . '"}';
+		    				$dados = '{"id" : "' . $service->id . '", "nome" : "' . $service->nome . '", "img" : "'. $service->img .'"  ,"descricao" : "' . $service->descricao . '","ativo" : "' . $service->ativo . '"}';
 		    			}
 
 						echo '{"succeed": true, "dados": ' . $dados . '}';
@@ -76,7 +76,7 @@
 							$imagem = $_FILES['img']['name'];
 							$nome = $_POST["nome"];
 							$descricao= $_POST["descricao"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "on" ? "0" : "1");	
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
 							
 
 							$qry_servicos = "INSERT INTO tbl_servicos (nome, img, descricao ,ativo) VALUES ('" . $nome . "','" . $new_name . "', '". $descricao ."' ,'" . $ativo . "')";
@@ -85,7 +85,7 @@
 								$conn->commit();
 								echo '{"succeed": true}';
 							} else {
-						        throw new Exception("Erro ao inserir o slide: " . $qry_servicos . "<br>" . $conn->error);
+						        throw new Exception("Erro ao inserir o servico: " . $qry_servicos . "<br>" . $conn->error);
 							}							
 						}
 					}
@@ -148,7 +148,7 @@
 							$nome = $_POST["nome"];						
 							$descricao = $_POST["descricao"];
 							$img = $_FILES["img"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "on" ? "0" : "1");
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
 							
 
 							$qry_servicos = "UPDATE tbl_servicos 

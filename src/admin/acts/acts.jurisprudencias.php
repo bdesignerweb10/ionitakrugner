@@ -15,12 +15,12 @@
 
 					$id = $_GET['id']; // $_SESSION["fake_id"];
 
-			    	$qry_videos = $conn->query("SELECT id_video, titulo, url,ativo FROM tbl_videos WHERE id_video = $id") or trigger_error("27005 - " . $conn->error);
+			    	$qry_jurisprudencia = $conn->query("SELECT id_jurisprudencia, nome,descricao,  ativo ,id_grupo FROM tbl_jurisprudencia WHERE id_jurisprudencia = $id") or trigger_error("27005 - " . $conn->error);
 
-					if ($qry_videos && $qry_videos->num_rows > 0) {
-						$dados = "";						
-		    			while($media = $qry_videos->fetch_object()) {		    				
-		    				$dados = '{"id" : "' . $media->id_video . '", "nome" : "' . $media->titulo . '", "link" : "'. str_replace('"', "'", $media->url) .'"  ,"ativo" : "' . $media->ativo . '"}';
+					if ($qry_jurisprudencia && $qry_jurisprudencia->num_rows > 0) {
+						$dados = "";
+		    			while($juris = $qry_jurisprudencia->fetch_object()) {
+		    				$dados = '{"id" : "' . $juris->id_jurisprudencia . '", "nome" : "' . $juris->nome . '", "descricao" : "'. $juris->descricao .'"  ,"video" : "' . $juris->ativo . '", "video" : "'. $juris->id_grupo.'"}';
 		    			}
 
 						echo '{"succeed": true, "dados": ' . $dados . '}';
@@ -43,13 +43,13 @@
 						$errMsg = "";
 
 						if(!isset($_POST["nome"]) || empty($_POST["nome"])) {
-							$errMsg .= "Titulo do Video";
+							$errMsg .= "Titulo da Jurisprudência";
 							$isValid = false;
 						}
 						
 
-						if(!isset($_POST["link"]) || empty($_POST["link"])) {
-							$errMsg .= "link do video";
+						if(!isset($_POST["descricao"]) || empty($_POST["descricao"])) {
+							$errMsg .= "Descrição da Jurisprudência";
 							$isValid = false;
 						}						
 
@@ -60,18 +60,20 @@
 						}
 						else {
 							
-							$titulo = $_POST["nome"];
-							$url = $_POST["link"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");	
+							$grupo = $_POST["grupo"];
+							$nome = $_POST["nome"];
+							$descricao= $_POST["descricao"];
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
+												
+
+							$qry_jurisprudencia = "INSERT INTO tbl_jurisprudencia (nome, descricao, ativo, id_grupo) VALUES ('" . $nome . "','" . $descricao . "' ,'" . $ativo . "','".$grupo."')";
 							
 
-							$qry_videos = "INSERT INTO tbl_videos (titulo,url ,ativo) VALUES ('" . $titulo . "','" . $url . "','" . $ativo . "')";
-
-							if ($conn->query($qry_videos) === TRUE) {
+							if ($conn->query($qry_jurisprudencia) === TRUE) {
 								$conn->commit();
 								echo '{"succeed": true}';
 							} else {
-						        throw new Exception("Erro ao inserir o slide: " . $qry_videos . "<br>" . $conn->error);
+						        throw new Exception("Erro ao inserir a entrevista: " . $qry_jurisprudencia . "<br>" . $conn->error);
 							}							
 						}
 					}
@@ -102,12 +104,12 @@
 						$errMsg = "";
 
 						if(!isset($_POST["nome"]) || empty($_POST["nome"])) {
-							$errMsg .= "Titulo do Video";
+							$errMsg .= "Titulo da Jurisprudência";
 							$isValid = false;
 						}					
 
-						if(!isset($_POST["link"]) || empty($_POST["link"])) {
-							$errMsg .= "Link do video";
+						if(!isset($_POST["descricao"]) || empty($_POST["descricao"])) {
+							$errMsg .= "Descrição da Jurisprudência";
 							$isValid = false;
 						}
 
@@ -117,21 +119,25 @@
 							exit();
 						}
 						else {							
-							
-							$titulo = $_POST["nome"];						
-							$url = $_POST["link"];							
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
 
-							$qry_videos = "UPDATE tbl_videos 
-											  SET titulo = '" . $titulo . "',
-											  	  url = '" . $url . "',
-											      ativo = " . $ativo . "
-											WHERE id_video = $id";
-							if ($conn->query($qry_videos) === TRUE) {
+							$grupo = $_POST["grupo"];
+							$nome = $_POST["nome"];
+							$descricao= $_POST["descricao"];
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
+							
+							
+
+							$qry_jurisprudencia = "UPDATE tbl_jurisprudencia 
+											  SET nome = '" . $nome . "',
+											      descricao = '" . $descricao . "',
+											      ativo = " . $ativo . ",
+											      id_grupo = " . $grupo . "
+											WHERE id_jurisprudencia = $id";
+							if ($conn->query($qry_jurisprudencia) === TRUE) {
 								$conn->commit();
 								echo '{"succeed": true}';
 							} else {
-						        throw new Exception("Erro ao alterar o evento: " . $qry_videos . "<br>" . $conn->error);
+						        throw new Exception("Erro ao alterar o evento: " . $qry_jurisprudencia . "<br>" . $conn->error);
 							}
 						}
 					}
@@ -157,18 +163,18 @@
 
 				$id = $_GET['id']; // $_SESSION["fake_id"];
 
-				$qrydel_videos = "DELETE FROM tbl_videos WHERE id_video = $id";
-				if ($conn->query($qrydel_videos) === TRUE) {
+				$qrydel_jurisprudencia = "DELETE FROM tbl_jurisprudencia WHERE id_jurisprudencia = $id";
+				if ($conn->query($qrydel_jurisprudencia) === TRUE) {
 				
-					$qrydelvideos = "DELETE FROM tbl_videos WHERE id_video = $id";
-					if ($conn->query($qrydelvideos) === TRUE) {
+					$qrydeljurisprudencia = "DELETE FROM tbl_jurisprudencia WHERE id_jurisprudencia = $id";
+					if ($conn->query($qrydeljurisprudencia) === TRUE) {
 						$conn->commit();
 						echo '{"succeed": true}';
 					} else {
-				        throw new Exception("Erro ao remover o evento: " . $qrydelvideos . "<br>" . $conn->error);
+				        throw new Exception("Erro ao remover o evento: " . $qrydeljurisprudencia . "<br>" . $conn->error);
 					}
 				} else {
-			        throw new Exception("Erro ao remover o evento: " . $qrydel_videos . "<br>" . $conn->error);
+			        throw new Exception("Erro ao remover os times do evento: " . $qrydel_jurisprudencia . "<br>" . $conn->error);
 				}
 			} catch(Exception $e) {
 				$conn->rollback();

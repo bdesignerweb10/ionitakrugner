@@ -63,7 +63,7 @@
 							$imagem = $_POST["imagem"];
 							$nome = $_POST["nome"];
 							$descricao= $_POST["descricao"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "on" ? "0" : "1");	
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");	
 							$data_postagem = date('Y-m-d');
 
 							$qry_informativos = "INSERT INTO tbl_informativos (titulo, descricao, data_postagem ,ativo, id_img) VALUES ('" . $nome . "','" . $descricao . "', '". $data_postagem ."' ,'" . $ativo . "','".$imagem."')";
@@ -122,7 +122,7 @@
 							$imagem = $_POST["imagem"];
 							$nome = $_POST["nome"];
 							$descricao= $_POST["descricao"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "on" ? "0" : "1");	
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");	
 							$data_postagem = date('d/m/y');
 							
 

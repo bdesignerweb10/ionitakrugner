@@ -19,7 +19,7 @@
 				  <div class="card-body">
 				    <h5 class="card-title"><?php echo $banner->nome; ?></h5>
 				    <p class="card-text"><a href=""><?php echo $banner->link; ?></a></p>
-				    <?php if ($banner->ativo == 0) { 
+				    <?php if ($banner->ativo == 1) { 
 			        	$ativo ='fas fa-check text-success'; 
 			      	} else { 
 			      		$ativo ='fas fa-times text-danger';

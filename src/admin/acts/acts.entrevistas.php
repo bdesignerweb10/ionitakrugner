@@ -15,12 +15,12 @@
 
 					$id = $_GET['id']; // $_SESSION["fake_id"];
 
-			    	$qry_videos = $conn->query("SELECT id_video, titulo, url,ativo FROM tbl_videos WHERE id_video = $id") or trigger_error("27005 - " . $conn->error);
+			    	$qry_entrevista = $conn->query("SELECT id_entrevista, titulo,descricao,  ativo ,id_video FROM tbl_entrevistas WHERE id_entrevista = $id") or trigger_error("27005 - " . $conn->error);
 
-					if ($qry_videos && $qry_videos->num_rows > 0) {
-						$dados = "";						
-		    			while($media = $qry_videos->fetch_object()) {		    				
-		    				$dados = '{"id" : "' . $media->id_video . '", "nome" : "' . $media->titulo . '", "link" : "'. str_replace('"', "'", $media->url) .'"  ,"ativo" : "' . $media->ativo . '"}';
+					if ($qry_entrevista && $qry_entrevista->num_rows > 0) {
+						$dados = "";
+		    			while($noticia = $qry_entrevista->fetch_object()) {
+		    				$dados = '{"id" : "' . $noticia->id_entrevista . '", "nome" : "' . $noticia->titulo . '", "descricao" : "'. $noticia->descricao .'"  ,"video" : "' . $noticia->ativo . '", "video" : "'. $noticia->id_video.'"}';
 		    			}
 
 						echo '{"succeed": true, "dados": ' . $dados . '}';
@@ -43,13 +43,13 @@
 						$errMsg = "";
 
 						if(!isset($_POST["nome"]) || empty($_POST["nome"])) {
-							$errMsg .= "Titulo do Video";
+							$errMsg .= "Titulo da Entrevista";
 							$isValid = false;
 						}
 						
 
-						if(!isset($_POST["link"]) || empty($_POST["link"])) {
-							$errMsg .= "link do video";
+						if(!isset($_POST["descricao"]) || empty($_POST["descricao"])) {
+							$errMsg .= "Descrição da entrevista";
 							$isValid = false;
 						}						
 
@@ -60,18 +60,23 @@
 						}
 						else {
 							
-							$titulo = $_POST["nome"];
-							$url = $_POST["link"];
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");	
-							
+							$nome = $_POST["nome"];
+							$descricao= $_POST["descricao"];
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");			
+							$video = $_POST["video"];
 
-							$qry_videos = "INSERT INTO tbl_videos (titulo,url ,ativo) VALUES ('" . $titulo . "','" . $url . "','" . $ativo . "')";
+							if ($video == 'null') {
+								$qry_entrevistas = "INSERT INTO tbl_entrevistas (titulo, descricao, ativo) VALUES ('" . $nome . "','" . $descricao . "' ,'" . $ativo . "')";						
+							} else {					
 
-							if ($conn->query($qry_videos) === TRUE) {
+							$qry_entrevistas = "INSERT INTO tbl_entrevistas (titulo, descricao, ativo, id_video) VALUES ('" . $nome . "','" . $descricao . "' ,'" . $ativo . "','".$video."')";
+							}
+
+							if ($conn->query($qry_entrevistas) === TRUE) {
 								$conn->commit();
 								echo '{"succeed": true}';
 							} else {
-						        throw new Exception("Erro ao inserir o slide: " . $qry_videos . "<br>" . $conn->error);
+						        throw new Exception("Erro ao inserir a entrevista: " . $qry_entrevistas . "<br>" . $conn->error);
 							}							
 						}
 					}
@@ -102,12 +107,12 @@
 						$errMsg = "";
 
 						if(!isset($_POST["nome"]) || empty($_POST["nome"])) {
-							$errMsg .= "Titulo do Video";
+							$errMsg .= "Titulo da entrevista";
 							$isValid = false;
 						}					
 
-						if(!isset($_POST["link"]) || empty($_POST["link"])) {
-							$errMsg .= "Link do video";
+						if(!isset($_POST["descricao"]) || empty($_POST["descricao"])) {
+							$errMsg .= "Descrição da entrevista";
 							$isValid = false;
 						}
 
@@ -117,21 +122,25 @@
 							exit();
 						}
 						else {							
-							
-							$titulo = $_POST["nome"];						
-							$url = $_POST["link"];							
-							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
 
-							$qry_videos = "UPDATE tbl_videos 
-											  SET titulo = '" . $titulo . "',
-											  	  url = '" . $url . "',
-											      ativo = " . $ativo . "
-											WHERE id_video = $id";
-							if ($conn->query($qry_videos) === TRUE) {
+							$video = $_POST["video"];
+							$nome = $_POST["nome"];
+							$descricao= $_POST["descricao"];
+							$ativo = (isset($_POST["ativo"]) && $_POST["ativo"] == "1" ? "1" : "0");
+							
+							
+
+							$qry_entrevistas = "UPDATE tbl_entrevistas 
+											  SET titulo = '" . $nome . "',
+											      descricao = '" . $descricao . "',
+											      ativo = " . $ativo . ",
+											      id_video = " . $video . "
+											WHERE id_entrevista = $id";
+							if ($conn->query($qry_entrevistas) === TRUE) {
 								$conn->commit();
 								echo '{"succeed": true}';
 							} else {
-						        throw new Exception("Erro ao alterar o evento: " . $qry_videos . "<br>" . $conn->error);
+						        throw new Exception("Erro ao alterar o evento: " . $qry_entrevistas . "<br>" . $conn->error);
 							}
 						}
 					}
@@ -157,18 +166,18 @@
 
 				$id = $_GET['id']; // $_SESSION["fake_id"];
 
-				$qrydel_videos = "DELETE FROM tbl_videos WHERE id_video = $id";
-				if ($conn->query($qrydel_videos) === TRUE) {
+				$qrydel_entrevistas = "DELETE FROM tbl_entrevistas WHERE id_entrevista = $id";
+				if ($conn->query($qrydel_entrevistas) === TRUE) {
 				
-					$qrydelvideos = "DELETE FROM tbl_videos WHERE id_video = $id";
-					if ($conn->query($qrydelvideos) === TRUE) {
+					$qrydelentrevistas = "DELETE FROM tbl_entrevistas WHERE id_entrevista = $id";
+					if ($conn->query($qrydelentrevistas) === TRUE) {
 						$conn->commit();
 						echo '{"succeed": true}';
 					} else {
-				        throw new Exception("Erro ao remover o evento: " . $qrydelvideos . "<br>" . $conn->error);
+				        throw new Exception("Erro ao remover o evento: " . $qrydelentrevistas . "<br>" . $conn->error);
 					}
 				} else {
-			        throw new Exception("Erro ao remover o evento: " . $qrydel_videos . "<br>" . $conn->error);
+			        throw new Exception("Erro ao remover os times do evento: " . $qrydel_entrevistas . "<br>" . $conn->error);
 				}
 			} catch(Exception $e) {
 				$conn->rollback();

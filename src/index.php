@@ -1,9 +1,9 @@
 <?php
 	require_once("header.php");
-	$slides = $conn->query("select nome, link, img from tbl_slides where ativo = 0") or trigger_error($conn->error);
-	$video = $conn->query("select titulo,url, ativo from tbl_videos where ativo = 0 order by id_video desc limit 1;
+	$slides = $conn->query("select nome, link, img from tbl_slides where ativo = 1") or trigger_error($conn->error);
+	$video = $conn->query("select titulo,url, ativo from tbl_videos where ativo = 1 order by id_video desc limit 1;
 ") or trigger_error($conn->error);	
-	$informativos = $conn->query("select * from tbl_informativos where ativo = 0 order by id_info desc LIMIT 4 ") or trigger_error($conn->error);
+	$informativos = $conn->query("select * from tbl_informativos where ativo = 1 order by id_info desc LIMIT 4 ") or trigger_error($conn->error);
 ?>
 <main>
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -14,7 +14,7 @@
 			  	while($banner = $slides->fetch_object()) {	
 		 ?>
 	    <div class="carousel-item <?php if($count == 0) echo 'active'; ?>" data-interval="10000">	      	
-	      <img src="img/slides/<?php echo $banner->img; ?>" class="d-block w-100" alt="...">
+	      <a href="<?php echo $banner->link; ?>"><img src="img/slides/<?php echo $banner->img; ?>" class="d-block w-100" alt="..."></a>
 	    </div>
 	    	<?php $count++; } ?> 
 		<?php } ?>		    

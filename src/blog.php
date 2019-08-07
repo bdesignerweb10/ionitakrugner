@@ -1,5 +1,8 @@
 <?php
 	require_once("header.php");
+	$categorias = $conn->query("select * from tbl_blog_cat where ativo = 1") or trigger_error($conn->error);
+	$destaque = $conn->query("select id_blog, tbl_blog.nome as titulo, img, descricao, tbl_blog.ativo, destaque, data_publicacao, tbl_blog_cat.nome as categoria from tbl_blog inner join tbl_blog_cat on tbl_blog.id_cat = tbl_blog_cat.id_cat where tbl_blog.ativo = 1 and destaque = 1 order by id_blog desc LIMIT 1") or trigger_error($conn->error);
+	$blog = $conn->query("select id_blog, tbl_blog.nome as titulo, img, descricao, tbl_blog.ativo, destaque, data_publicacao, tbl_blog_cat.nome as categoria from tbl_blog inner join tbl_blog_cat on tbl_blog.id_cat = tbl_blog_cat.id_cat where tbl_blog.ativo = 1 LIMIT 6") or trigger_error($conn->error);
 ?>
 <main>
 	<div class="container-fluid capa">
@@ -22,14 +25,19 @@
 			</div><!--col-sm-4-->
 			<div class="col-sm-4"></div>
 			<div class="col-sm-2">
-				<div class="form-group">				    
-				    <select class="form-control categoria" id="exampleFormControlSelect1">				    	
-				      <option>CATEGORIAS</option>
-				      <option>2</option>
-				      <option>3</option>
-				      <option>4</option>
-				      <option>5</option>
-				    </select>
+				<div class="form-group">
+					<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="GET">				    
+					    <select class="form-control categoria" id="exampleFormControlSelect1">				    	
+					    	<option>CATEGORIAS</option>
+						    	<?php								
+									if ($categorias && $categorias->num_rows > 0) {
+							  		while($cat = $categorias->fetch_object()) {	
+						 	  	?>	
+					 	  		<option value="<?php echo $cat->id_cat; ?>"><?php echo $cat->nome; ?></option>
+					 	  			<?php } ?> 
+						  		<?php } ?>
+					    </select>
+				    </form>
 				  </div>
 			</div><!-- col-sm-4-->
 			<div class="col-sm-2"></div>
