@@ -30,8 +30,8 @@
 				    ?>
 				    <tr>
 				      <th scope="row"><?php echo $post->id_blog; ?></th>
-				      <td><?php echo $post->categoria; ?></td>
 				      <td><?php echo $post->nome; ?></td>
+				      <td><?php echo $post->categoria; ?></td>
 				      <td><?php if($post->data_publicacao != null) {$timestamp = strtotime($post->data_publicacao); echo date('d/m/Y', $timestamp);} else {echo 'Sem data';} ?></td>
 				      <?php if ($post->destaque == 1) { 
 			        	$destaque ='fas fa-check text-success'; 

@@ -4,6 +4,7 @@
 	$video = $conn->query("select titulo,url, ativo from tbl_videos where ativo = 1 order by id_video desc limit 1;
 ") or trigger_error($conn->error);	
 	$informativos = $conn->query("select * from tbl_informativos where ativo = 1 order by id_info desc LIMIT 4 ") or trigger_error($conn->error);
+	$blog = $conn->query("select * from tbl_blog where ativo = 1 order by id_blog desc LIMIT 3 ") or trigger_error($conn->error);
 ?>
 <main>
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -43,12 +44,12 @@
 				    		<i class="fas fa-angle-right"></i>
 				    	</div><!-- col-sm-1-->				    	
 				    	<div class="col-sm-10">
-				    		<p class="card-text"><a href="informativos.php"> <?php echo $info->titulo; ?></a></p>
+				    		<p class="card-text"><a href="info.php?id=<?php echo $info->id_info; ?>"> <?php echo $info->titulo; ?></a></p>
 				    	</div>		    	
 				    </div><!-- row-->
 				    <div class="divider"></div>
-				    <?php } ?> 
-				  		<?php } ?>
+				    	<?php } ?> 
+				  	<?php } ?>
 				  </div>				  
 				</div>
 				<div class="col-sm-10 btns-card">
@@ -59,32 +60,21 @@
 				<div class="card card-index-mob" style="width: 20rem; height: 330px;">
 				  <div class="card-body">
 				    <h5 class="card-title">Blog</h5>
+				    <?php								
+					if ($blog && $blog->num_rows > 0) {
+					  	while($post = $blog->fetch_object()) {	
+				 	?>
 				    <div class="row">
 				    	<div class="col-sm-5">
-				    		<img src="img/blog/blog.jpg">
+				    		<img src="img/blog/<?php echo $post->img; ?>">
 				    	</div><!-- col-sm-1-->
 				    	<div class="col-sm-7">
-				    		<p class="card-text"><a href=""> Lorem ipsum dolor sit amet, consectetur</a></p>
+				    		<p class="card-text"><a href="post.php?id=<?php echo $post->id_blog; ?>"> <?php echo $post->nome; ?></a></p>
 				    	</div>			    	
 				    </div><!-- row-->
 				    <div class="divider"></div>
-				    <div class="row">
-				    	<div class="col-sm-5">
-				    		<img src="img/blog/blog.jpg">
-				    	</div><!-- col-sm-1-->
-				    	<div class="col-sm-7">
-				    		<p class="card-text"><a href=""> Lorem ipsum dolor sit amet, consectetur</a></p>
-				    	</div>			    	
-				    </div><!-- row-->
-				    <div class="divider"></div>
-				    <div class="row">
-				    	<div class="col-sm-5">
-				    		<img src="img/blog/blog.jpg">
-				    	</div><!-- col-sm-1-->
-				    	<div class="col-sm-7">
-				    		<p class="card-text"><a href=""> Lorem ipsum dolor sit amet, consectetur</a></p>
-				    	</div>			    	
-				    </div><!-- row-->				    
+				    	<?php } ?> 
+				  	<?php } ?>		    
 				  </div>
 				</div>
 				<div class="col-sm-11 btns-card">	
