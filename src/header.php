@@ -95,14 +95,16 @@
 					</nav>
 				</div><!-- col-sm-8-->
 				<div class="col-sm-2 menu-search">
+					<form action="geral-resultado.php" method="POST">
 					<div class="input-group">
-						<input class="form-control search" type="search" placeholder="O que você procura?" aria-label="Search" style="border-right: none; color: #8dadb6; font-size: 13px;">
+						<input class="form-control search" type="search" name="pesquisar" id="pesquisar" placeholder="O que você procura?" aria-label="Search" style="border-right: none; color: #8dadb6; font-size: 13px;">
 						<div class="input-group-append">
 							<div class="input-group-text search" style="color: #8dadb6">
 								<i class="fas fa-search"></i>
 							</div>
 						</div>
 					</div>
+					</form>
 				</div>
 			</div><!-- row -->
 		</div><!-- container -->

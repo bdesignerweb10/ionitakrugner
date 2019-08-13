@@ -95,7 +95,7 @@
 				  	<?php } ?> 
 				  <?php } ?>
 				 	<div class="col-sm-11 btns-card">	
-						<a href="" class="btn btn-card btn-video">Veja mais</a>
+						<a href="videos.php" class="btn btn-card btn-video">Veja mais</a>
 					</div>					
 				</div>	
 			</div><!--col-sm-3-->

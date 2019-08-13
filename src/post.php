@@ -35,7 +35,7 @@
 				</div>	
 				<div class="col-sm-2"></div>
 				<div class="col-sm-10">
-					<p class="post-text"><?php echo $post->descricao; ?></p>
+					<p class="post-text"><?php echo nl2br (substr ($post->descricao, 0)); ?></p>
 				</div>
 				<div class="col-sm-2"></div>
 				<div class="col-sm-10" style="text-align: right;">

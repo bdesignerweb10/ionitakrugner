@@ -36,7 +36,7 @@ where tbl_informativos.ativo = 1 and id_info = $id") or trigger_error($conn->err
 				</div>	
 				<div class="col-sm-2"></div>
 				<div class="col-sm-10">
-					<p class="post-text"><?php echo $info->descricao; ?></p>
+					<p class="post-text"><?php echo nl2br (substr ($info->descricao, 0)) ?></p>
 				</div>							
 				<?php } ?> 
 			<?php } ?>

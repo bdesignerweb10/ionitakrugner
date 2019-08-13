@@ -39,10 +39,10 @@
 										        				<h5 class="card-title headline">'.$juris->nome.'</h5>
 										        			</div>
 										        			<div class="col-sm-3">
-										        				<span class="print"><a href="acts/acts.print.php"> Abrir/Imprimir <i class="fas fa-print"></i></a></span>
+										        				<span class="print"><a href="" onclick="window.print()"> Abrir/Imprimir <i class="fas fa-print"></i></a></span>
 										        			</div>
 									        			</div>					        					        
-									        			<p class="card-text">'.$juris->descricao.'</p>
+									        			<p class="card-text">'.nl2br (substr ($juris->descricao, 0)).'</p>
 									      			</div>
 									    		</div>
 									  		</div>

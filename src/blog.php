@@ -102,7 +102,7 @@
 			<div class="col-sm-10 border">
 		</div>					
 	</div><!--container-->
-	<div class="container">
+	<!--<div class="container">
 		<div class="row">
 			<div class="col-sm-5"></div>
 			<div class="col-sm-4 pagination-nav">
@@ -125,9 +125,9 @@
 				    </li>
 				  </ul>
 				</nav>
-			</div><!-- col-sm-4-->
+			</div>
 			<div class="col-sm-3"></div>
-		</div><!-- row -->
+		</div>
 	</div><!-- container-->
 </main>
 <script>

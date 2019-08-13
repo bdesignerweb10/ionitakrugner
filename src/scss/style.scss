@@ -84,18 +84,32 @@ body{
 	align-items: center;
 }
 
+.menu-search .form-control{
+	background-color: #1b5a6c !important;
+}
+
 .search{
 	border-radius: 50px;
 	border-color: #8dadb6;
 	background-color: #1b5a6c;
 	font-style: italic;
-	color: #8dadb6;
+	font-size: 12px;
+	color: #fff !important;
+}
+
+::-webkit-input-placeholder {
+   color: #ccc !important;
 }
 
 /* Capa */
 
 .default{
 	margin: 60px 0;
+}
+
+.default-videos{
+	margin-top: 60px;
+	margin-bottom: 60px;
 }
 
 /* Perfil */
@@ -225,7 +239,7 @@ body{
 .info-search{
 	border-radius: 10px;
 	background: #fff;
-    padding: 7px 17px;        
+    padding: 7px 17px;      
 }
 
 /* Jurisprudencia */
@@ -283,6 +297,21 @@ body{
 	font-size: 12px;
 	font-weight: bold;
 	text-decoration: none;
+}
+
+@media print {
+    header,footer, .capa,.accordion, .print{ 
+    	display: none;     	
+    }
+    .jurisprudence{
+    	text-align: left !important;
+    	float: left !important;
+    	width: 1000px !important;
+    	height: auto;
+    	flex: 0 0 100%;
+    	max-width: 100%;
+    	color: #000;
+    }
 }
 
 /* Blog */
@@ -451,6 +480,10 @@ body{
 		color: #1b5a6c !important;
 		opacity: 1;
 	}
+}
+
+.card-videos iframe{
+	width: 349px !important;
 }
 
 .cards .card{

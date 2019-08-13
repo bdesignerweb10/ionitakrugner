@@ -101,9 +101,9 @@ where tbl_informativos.ativo = 1 limit $inicio, $quantidade_pg";
 			<div class="col-sm-4">
 				<form action="info-resultado.php" method="POST">
 					<div class="input-group">
-						<input class="form-control info-search" type="search" name="pesquisar" id="pesquisar" placeholder="Buscar por assunto" aria-label="Search" style="border-right: none; color: #8dadb6; font-size: 13px;">
+						<input class="form-control info-search" type="search" name="pesquisar" id="pesquisar" placeholder="Buscar por assunto" aria-label="Search" style="border-right: none; color: #1b5a6c; font-size: 13px; border-color: #8dadb6;">
 						<div class="input-group-append">
-							<div class="input-group-text info-search" style="color: #8dadb6">
+							<div class="input-group-text info-search" style="color: #1b5a6c; border-color: #8dadb6;">
 								<i class="fas fa-search"></i>
 							</div>
 						</div>
